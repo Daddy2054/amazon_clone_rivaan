@@ -1,3 +1,6 @@
+import 'package:amazon_clone_rivaan/constants/global_variables.dart';
+import 'package:amazon_clone_rivaan/features/auth/screens/auth_screen.dart';
+import 'package:amazon_clone_rivaan/router.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,17 +16,16 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Amazon Clone',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Hello again.'),
-        ),
-        body: const Center(
-          child: Text('Flutter Demo Home Page'),
+        scaffoldBackgroundColor: GlobalVariables.backgroundColor,
+        colorScheme:
+            const ColorScheme.light(primary: GlobalVariables.secondaryColor),
+        appBarTheme: const AppBarTheme(
+          elevation: 0,
+          iconTheme: IconThemeData(color: Colors.black),
         ),
       ),
+      onGenerateRoute: (settings) => generateRoute(settings),
+      home: const AuthScreen(),
     );
   }
 }
