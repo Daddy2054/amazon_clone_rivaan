@@ -23,16 +23,18 @@ class AuthService {
         type: '',
         token: '',
       );
-
-      http.Response res = await http.post(
+      //   debugPrint(user.toJson().toString());
+      http.Response res1 = 
+      await http.post(
         Uri.parse('$uri/api/signup'),
         body: user.toJson(),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },
       );
+   //  if (!context.mounted) return;
       httpErrorHandle(
-        response: res,
+        response: res1,
         context: context,
         onSuccess: () {
           showSnackBar(
@@ -44,7 +46,7 @@ class AuthService {
     } catch (e) {
       showSnackBar(
         context,
-        e.toString() ,
+        e.toString(),
       );
     }
   }
