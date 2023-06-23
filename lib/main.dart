@@ -1,10 +1,24 @@
 import 'package:amazon_clone_rivaan/constants/global_variables.dart';
 import 'package:amazon_clone_rivaan/features/auth/screens/auth_screen.dart';
+import 'package:amazon_clone_rivaan/providers/user_provider.dart';
 import 'package:amazon_clone_rivaan/router.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  // WidgetsFlutterBinding.ensureInitialized();
+  // await SharedPreferences.getInstance();
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => UserProvider(),
+        ),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {

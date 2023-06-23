@@ -1,4 +1,5 @@
 import 'package:amazon_clone_rivaan/features/auth/screens/auth_screen.dart';
+import 'package:amazon_clone_rivaan/features/home/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
 Route<dynamic> generateRoute(RouteSettings routeSettings) {
@@ -9,7 +10,13 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
         builder: (_) => const AuthScreen(),
       );
 
-//      break;
+    //break;
+    case HomeScreen.routeName:
+      return MaterialPageRoute(
+        settings: routeSettings,
+        builder: (_) => const HomeScreen(),
+      );
+
     default:
       return MaterialPageRoute(
         settings: routeSettings,
