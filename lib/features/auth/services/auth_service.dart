@@ -37,7 +37,7 @@ class AuthService {
           'Content-Type': 'application/json; charset=UTF-8',
         },
       );
-      //  if (!context.mounted) return;
+        if (!context.mounted) return;
       httpErrorHandle(
         response: res1,
         context: context,
@@ -73,8 +73,8 @@ class AuthService {
           'Content-Type': 'application/json; charset=UTF-8',
         },
       );
-      print(res1.body);
-        if (!context.mounted) return;
+      // print(res1.body);
+      if (!context.mounted) return;
       httpErrorHandle(
         response: res1,
         context: context,
@@ -91,6 +91,43 @@ class AuthService {
           );
         },
       );
+    } catch (e) {
+      showSnackBar(
+        context,
+        e.toString(),
+      );
+    }
+  }
+
+  //get user data
+  void getUserData(
+    BuildContext context,
+  ) async {
+    try {
+      var userProvider = Provider.of<UserProvider>(context, listen: false);
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      String? token = prefs.getString('x-auth-token');
+      if (token == null) {
+        prefs.setString('x-auth-token', '');
+      }
+      var tokenRes = await http.post(Uri.parse('$uri/tokenIsValid'),
+          headers: <String, String>{
+            'Content-Type': 'application/json; charset=UTF-8',
+            'x-auth-token': token!
+          });
+      var response = jsonDecode(tokenRes.body);
+      if (response == true) {
+        http.Response userRes = await http.get(
+          Uri.parse('$uri/'),
+          headers: <String, String>{
+            'Content-Type': 'application/json; charset=UTF-8',
+            'x-auth-token': token
+          },
+        );
+
+        userProvider.setUser(userRes.body);
+        //get user data
+      }
     } catch (e) {
       showSnackBar(
         context,

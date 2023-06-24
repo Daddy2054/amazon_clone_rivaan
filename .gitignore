@@ -42,3 +42,9 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Compiled binary addons (http://nodejs.org/api/addons.html)
+server/build/Release
+
+# Dependency directory
+server/node_modules
