@@ -1,7 +1,7 @@
+import 'package:amazon_clone_rivaan/common/widgets/bottom_bar.dart';
 import 'package:amazon_clone_rivaan/constants/global_variables.dart';
 import 'package:amazon_clone_rivaan/features/auth/screens/auth_screen.dart';
 import 'package:amazon_clone_rivaan/features/auth/services/auth_service.dart';
-import 'package:amazon_clone_rivaan/features/home/screens/home_screen.dart';
 import 'package:amazon_clone_rivaan/providers/user_provider.dart';
 import 'package:amazon_clone_rivaan/router.dart';
 import 'package:flutter/material.dart';
@@ -51,7 +51,7 @@ class _MyAppState extends State<MyApp> {
       ),
       onGenerateRoute: (settings) => generateRoute(settings),
       home: Provider.of<UserProvider>(context).user.token.isNotEmpty ?
-      const HomeScreen()
+      const BottomBar()
       :const AuthScreen(),
     );
   }
