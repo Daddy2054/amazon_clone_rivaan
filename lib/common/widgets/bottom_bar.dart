@@ -1,4 +1,5 @@
 import 'package:amazon_clone_rivaan/constants/global_variables.dart';
+import 'package:amazon_clone_rivaan/features/account/screens/account_screen.dart';
 import 'package:amazon_clone_rivaan/features/home/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -17,9 +18,7 @@ class _BottomBarState extends State<BottomBar> {
 
   List<Widget> pages = [
     const HomeScreen(),
-    const Center(
-      child: Text('Account Page'),
-    ),
+    const AccountScreen(),
     const Center(
       child: Text('Cart Page'),
     ),
@@ -96,12 +95,12 @@ class _BottomBarState extends State<BottomBar> {
                   ),
                 ),
               ),
-              child: Badge(
+              child: const Badge(
                 //elevation:0,
-                label: const Text('2'),
+                label: Text('2'),
                 textColor: Colors.white,
 
-                child: const Icon(
+                child: Icon(
                   Icons.shopping_cart_outlined,
                 ),
               ),
