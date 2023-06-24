@@ -63,6 +63,9 @@ class AuthService {
     required String password,
   }) async {
     try {
+                //// ignore: invalid_use_of_visible_for_testing_member
+          //SharedPreferences.setMockInitialValues({});
+          SharedPreferences prefs = await SharedPreferences.getInstance();
       http.Response res1 = await http.post(
         Uri.parse('$uri/api/signin'),
         body: jsonEncode({
@@ -79,9 +82,7 @@ class AuthService {
         response: res1,
         context: context,
         onSuccess: () async {
-          // ignore: invalid_use_of_visible_for_testing_member
-          SharedPreferences.setMockInitialValues({});
-          SharedPreferences prefs = await SharedPreferences.getInstance();
+
           Provider.of<UserProvider>(context, listen: false).setUser(res1.body);
           await prefs.setString('x-auth-token', jsonDecode(res1.body)['token']);
           Navigator.pushNamedAndRemoveUntil(
