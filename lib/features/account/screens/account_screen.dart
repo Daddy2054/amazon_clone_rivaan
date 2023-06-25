@@ -32,8 +32,8 @@ class AccountScreen extends StatelessWidget {
               ),
               Container(
                 padding: const EdgeInsets.only(left: 15, right: 15),
-                child: Row(
-                  children: const [
+                child: const Row(
+                  children: [
                     Padding(
                       padding: EdgeInsets.only(right: 15, left: 15),
                       child: Icon(Icons.notifications_outlined),
