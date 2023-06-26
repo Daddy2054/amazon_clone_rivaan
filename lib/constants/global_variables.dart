@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 //String uri = 'http://127.0.0.1:3000'; //don't work on android!!
-String uri = 'http://192.168.0.149:3000';  //local network 192.168.0.149
-//String uri = 'http://172.20.10.8:3000'; // via extender -> hotspot iphone
+//String uri = 'http://192.168.0.149:3000';  //local network 192.168.0.149
+String uri = 'http://172.20.10.8:3000'; // via extender -> hotspot iphone
 
 class GlobalVariables {
   // COLORS
@@ -51,5 +51,4 @@ class GlobalVariables {
       'image': 'assets/images/fashion.jpeg',
     },
   ];
-
 }
