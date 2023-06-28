@@ -5,6 +5,8 @@ const mongoose = require('mongoose');
 
 const authRouter = require('./routes/auth');
 const adminRouter = require('./routes/admin');
+const productRouter = require('./routes/product');
+
 
 // init
 const PORT = 3000;
@@ -15,6 +17,8 @@ const app = express();
 app.use(express.json());
 app.use(authRouter);
 app.use(adminRouter);
+app.use(productRouter);
+
 
 //connections
 mongoose.connect('mongodb://mongoadmin:secret@127.0.0.1:27017/?authMechanism=DEFAULT').then(() => {
