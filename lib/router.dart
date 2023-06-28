@@ -3,7 +3,9 @@ import 'package:amazon_clone_rivaan/features/admin/screens/add_product_screen.da
 import 'package:amazon_clone_rivaan/features/auth/screens/auth_screen.dart';
 import 'package:amazon_clone_rivaan/features/home/screens/category_deals_screen.dart';
 import 'package:amazon_clone_rivaan/features/home/screens/home_screen.dart';
+import 'package:amazon_clone_rivaan/features/product_details/screens/product_details_screen.dart';
 import 'package:amazon_clone_rivaan/features/search/screens/search_screen.dart';
+import 'package:amazon_clone_rivaan/models/product.dart';
 import 'package:flutter/material.dart';
 
 Route<dynamic> generateRoute(RouteSettings routeSettings) {
@@ -46,7 +48,14 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
         settings: routeSettings,
         builder: (_) => const BottomBar(),
       );
-
+    case ProductDetailScreen.routeName:
+      var product = routeSettings.arguments as Product;
+      return MaterialPageRoute(
+        settings: routeSettings,
+        builder: (_) => ProductDetailScreen(
+          product: product,
+        ),
+      );
     default:
       return MaterialPageRoute(
         settings: routeSettings,
