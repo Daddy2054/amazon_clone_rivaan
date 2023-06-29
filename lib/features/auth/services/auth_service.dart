@@ -28,6 +28,7 @@ class AuthService {
         address: '',
         type: '',
         token: '',
+        cart: [],
       );
       //   debugPrint(user.toJson().toString());
       http.Response res1 = await http.post(
