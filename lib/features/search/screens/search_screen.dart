@@ -42,7 +42,7 @@ class _SearchScreenState extends State<SearchScreen> {
 
   @override
   Widget build(BuildContext context) {
-    var navigateToSearchScreen;
+   // var navigateToSearchScreen;
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(60),
