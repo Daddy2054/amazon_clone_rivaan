@@ -21,5 +21,6 @@ productRouter.get('/api/products/search/:name', auth, async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
+// create a post request route to rate the product
 
 module.exports = productRouter;
