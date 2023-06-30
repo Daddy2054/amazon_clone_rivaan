@@ -1,3 +1,4 @@
+import 'package:amazon_clone_rivaan/features/cart/services/cart_services.dart';
 import 'package:amazon_clone_rivaan/features/product_details/services/product_details_services.dart';
 import 'package:amazon_clone_rivaan/models/product.dart';
 import 'package:amazon_clone_rivaan/providers/user_provider.dart';
@@ -18,9 +19,17 @@ class CartProduct extends StatefulWidget {
 class _CartProductState extends State<CartProduct> {
   final ProductDetailsServices productDetailsServices =
       ProductDetailsServices();
+  final CartServices cartServices = CartServices();
 
   void increaseQuantity(Product product) {
     productDetailsServices.addToCart(
+      context: context,
+      product: product,
+    );
+  }
+
+  void decreaseQuantity(Product product) {
+    cartServices.removeFromCart(
       context: context,
       product: product,
     );
@@ -118,13 +127,16 @@ class _CartProductState extends State<CartProduct> {
                 ),
                 child: Row(
                   children: [
-                    Container(
-                      width: 35,
-                      height: 32,
-                      alignment: Alignment.center,
-                      child: const Icon(
-                        Icons.remove,
-                        size: 18,
+                    InkWell(
+                      onTap: () => decreaseQuantity(product),
+                      child: Container(
+                        width: 35,
+                        height: 32,
+                        alignment: Alignment.center,
+                        child: const Icon(
+                          Icons.remove,
+                          size: 18,
+                        ),
                       ),
                     ),
                     DecoratedBox(
