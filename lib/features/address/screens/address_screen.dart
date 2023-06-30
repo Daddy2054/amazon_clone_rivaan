@@ -1,6 +1,8 @@
 import 'package:amazon_clone_rivaan/common/widgets/custom_textfield.dart';
 import 'package:amazon_clone_rivaan/constants/global_variables.dart';
+import 'package:amazon_clone_rivaan/providers/user_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class AddressScreen extends StatefulWidget {
   static const String routeName = '/address';
@@ -17,6 +19,8 @@ class _AddressScreenState extends State<AddressScreen> {
   final TextEditingController cityController = TextEditingController();
   final _addressFormKey = GlobalKey<FormState>();
 
+  // List<PaymentItem> _paymentItems = [];
+
   @override
   void dispose() {
     super.dispose();
@@ -26,10 +30,12 @@ class _AddressScreenState extends State<AddressScreen> {
     cityController.dispose();
   }
 
+  // void onGooglePayResult(res) {}
+
   @override
   Widget build(BuildContext context) {
-//    var address = context.watch<UserProvider>().user.address;
-    var address = 'Fake Street, 101';
+   var address = context.watch<UserProvider>().user.address;
+ //   var address = 'Fake Street, 101';
 
     return Scaffold(
       appBar: PreferredSize(
@@ -113,6 +119,17 @@ class _AddressScreenState extends State<AddressScreen> {
                   ],
                 ),
               ),
+              // GooglePayButton(
+              //   paymentConfiguration:
+              //       PaymentConfiguration.fromJsonString('gpay.json'),
+              //   paymentItems: _paymentItems,
+              //   type: GooglePayButtonType.pay,
+              //   margin: const EdgeInsets.only(top: 15.0),
+              //   onPaymentResult: onGooglePayResult,
+              //   loadingIndicator: const Center(
+              //     child: CircularProgressIndicator(),
+              //   ),
+              // ),
             ],
           ),
         ),
