@@ -31,16 +31,6 @@ class _AddressScreenState extends State<AddressScreen> {
   List<PaymentItem> paymentItems = [];
 
   @override
-  void initState() {
-    super.initState();
-    paymentItems.add(PaymentItem(
-      amount: widget.totalAmount,
-      label: 'Total Amount',
-      status: PaymentItemStatus.final_price,
-    ));
-  }
-
-  @override
   void dispose() {
     super.dispose();
     flatBuildingController.dispose();
@@ -77,8 +67,8 @@ class _AddressScreenState extends State<AddressScreen> {
 
   @override
   Widget build(BuildContext context) {
-    var address2 = context.watch<UserProvider>().user.address;
-    var address = 'Fake Street, 101';
+    var address = context.watch<UserProvider>().user.address;
+    //var address = 'Fake Street, 101';
 
     return Scaffold(
       appBar: PreferredSize(
